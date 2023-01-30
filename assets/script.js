@@ -68,20 +68,21 @@ icon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
   todayWeatherDisplay.innerHTML = mainWeatherCard;
  
 
-    // for (let i = 8; i < 40; i + 8) {
+    for (let i = 8; i < 48; i+=8) {
+      
       // const element = array[i];
       
       console.log(data.list[8])
 
-      cityLocation = data.list[8].dt
+      cityLocation = data.list[i].dt
       cityDate = moment(cityLocation, "X").format("DD/MM/YY");
-      cityTemp = data.list[8].main.temp;
-      cityWind = data.list[8].wind.speed;
-      cityHumidity = data.list[8].main.humidity
-      icon = data.list[8].weather[0].icon
+      cityTemp = data.list[i].main.temp;
+      cityWind = data.list[i].wind.speed;
+      cityHumidity = data.list[i].main.humidity
+      icon = data.list[i].weather[0].icon
       icon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
   
-      let fiveDays = `<div class="card" style="width: 18rem;">
+      let fiveDays = `<div class="card col-sm-3">
       <div class="card-header">
         ${cityDate} <img class="img-thumbnail rounded" src=${icon}>
       </div>
@@ -92,10 +93,14 @@ icon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
       </ul>
     </div>`
   
-    forecastEl.innerHTML = fiveDays;
+    // forecastEl.innerHTML = fiveDays;
+    let newDiv = document.createElement("div");
+    newDiv.innerHTML = fiveDays;
+    forecastEl.append(newDiv);
+
   
       
-    // }
+    }
     
   
 })
