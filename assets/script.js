@@ -1,3 +1,6 @@
+
+let todayWeatherDisplay = document.querySelector("#today");
+
 // add event listener with fetch values
 
 document.querySelector("#search-button").addEventListener("click", function(event){
@@ -8,8 +11,8 @@ fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${citySearched}&limit=5&ap
 .then(response => response.json())
 .then(citiesFound =>{
   let firstCity = citiesFound[0];
-  console.log(firstCity.lat);
-  console.log(firstCity.lon);
+  // console.log(firstCity.lat);
+  // console.log(firstCity.lon);
 
   return fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${firstCity.lat}&lon=${firstCity.lon}&appid=d79ebdf8167debecd6d65d2247f86bad&units=metric`)
 })
@@ -23,10 +26,28 @@ fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${citySearched}&limit=5&ap
   //needs to be current date
   cityDate = data.city.timezone;
   console.log(data.city.timezone)
-  cityTemp = data.list[0].main.temp
+  //Temp
+  cityTemp = data.list[0].main.temp;
   console.log(data.list[0].main.temp)
+  //wind speed
+  cityWind = data.list[0].wind.speed;
   console.log(data.list[0].wind.speed)
+  //humidity
+  cityHumidity = data.list[0].main.humidity;
   console.log(data.list[0].main.humidity)
+
+  let mainWeatherCard =
+    `<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+    <h1>${cityName}</h1>
+      <li class="list-group-item">${cityTemp}</li>
+      <li class="list-group-item">${cityWind}</li>
+      <li class="list-group-item">${cityHumidity}</li>
+    </ul>
+  </div>`
+  todayWeatherDisplay.innerHTML = mainWeatherCard;
+ 
+  
     
 })
 
