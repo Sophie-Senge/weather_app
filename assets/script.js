@@ -1,6 +1,8 @@
 
 let todayWeatherDisplay = document.querySelector("#today");
 
+let now = moment().format('L');
+
 // add event listener with fetch values
 
 document.querySelector("#search-button").addEventListener("click", function(event){
@@ -21,28 +23,37 @@ fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${citySearched}&limit=5&ap
 .then(data => {
   console.log(data)
   //values which need to be used in main weather div
-  cityName = data.city.name;
+  let cityName = data.city.name;
   console.log(data.city.name)
   //needs to be current date
-  cityDate = data.city.timezone;
-  console.log(data.city.timezone)
+  let cityLocation = data.list[0].dt
+  cityDate = moment(cityLocation, "X").format("DD/MM/YY")
+  console.log(data.list[0].dt)
   //Temp
-  cityTemp = data.list[0].main.temp;
+ let cityTemp = data.list[0].main.temp;
   console.log(data.list[0].main.temp)
   //wind speed
-  cityWind = data.list[0].wind.speed;
+  let cityWind = data.list[0].wind.speed;
   console.log(data.list[0].wind.speed)
   //humidity
-  cityHumidity = data.list[0].main.humidity;
+  let cityHumidity = data.list[0].main.humidity;
   console.log(data.list[0].main.humidity)
 
+  //icon grab
+  console.log(data.list[0].weather[0].icon)
+let icon = data.list[0].weather[0].icon
+icon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+
+
   let mainWeatherCard =
-    `<div class="card" style="width: 18rem;">
+    `
+    <div class="card" style="width: 75;">
     <ul class="list-group list-group-flush">
-    <h1>${cityName}</h1>
-      <li class="list-group-item">${cityTemp}</li>
-      <li class="list-group-item">${cityWind}</li>
-      <li class="list-group-item">${cityHumidity}</li>
+    <h1>${cityName} <img class="img-thumbnail rounded" src=${icon}></h1>
+    <h2>${cityDate}</h2>
+      <li class="list-group-item">Temp: ${cityTemp} °C</li>
+      <li class="list-group-item">Wind: ${cityWind} KPH</li>
+      <li class="list-group-item">Humidity: ${cityHumidity} %</li>
     </ul>
   </div>`
   todayWeatherDisplay.innerHTML = mainWeatherCard;
