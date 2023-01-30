@@ -1,5 +1,10 @@
 // add event listener with fetch values
-fetch("http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=d79ebdf8167debecd6d65d2247f86bad")
+
+document.querySelector("#search-button").addEventListener("click", function(event){
+event.preventDefault();
+let citySearched = document.querySelector("#search-input").value;
+
+fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${citySearched}&limit=5&appid=d79ebdf8167debecd6d65d2247f86bad`)
 .then(response => response.json())
 .then(citiesFound =>{
   let firstCity = citiesFound[0];
@@ -24,6 +29,12 @@ fetch("http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=d79eb
   console.log(data.list[0].main.humidity)
     
 })
+
+
+})
+
+
+
 
 
 
