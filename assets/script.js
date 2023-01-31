@@ -1,7 +1,8 @@
 let todayWeatherDisplay = document.querySelector("#today");
 let citiesHistoryEl = document.querySelector("#history");
 let forecastEl = document.querySelector("#forecast");
-// function with add event listener with fetch values
+
+// function to get city information
 function fetchCity(city) {
   fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=d79ebdf8167debecd6d65d2247f86bad`)
     .then(response => response.json())
@@ -13,7 +14,7 @@ function fetchCity(city) {
     })
 
 }
-
+//function to get lat and lon
 function fetchWeather(lat, lon) {
   fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=d79ebdf8167debecd6d65d2247f86bad&units=metric`)
     .then(response => response.json())
@@ -67,7 +68,7 @@ function makeForecast(data) {
   forecastEl.innerHTML = ""
   for (let i = 8; i < data.list.length; i += 8) {
     // const element = array[i];
-    console.log(data.list[8])
+    // console.log(data.list[8])
     cityLocation = data.list[i].dt
     cityDate = moment(cityLocation, "X").format("DD/MM/YY");
     cityTemp = data.list[i].main.temp;
@@ -85,6 +86,7 @@ function makeForecast(data) {
     <li class="list-group-item">Humidity: ${cityHumidity} %</li>
   </ul>
 </div>`
+
     // forecastEl.innerHTML = fiveDays;
     let newDiv = document.createElement("div");
     newDiv.innerHTML = fiveDays;
@@ -121,11 +123,17 @@ function renderButtons() {
   for (let i = 0; i < citiesHistory.length; i++) {
     let buttons = $("<button>");
     buttons.addClass("city");
+    buttons.addClass("btn btn-outline-dark btn-sm");
+    buttons.attr("data-name", citiesHistory[i]);
     buttons.text(citiesHistory[i]);
     $("#history").append(buttons);
+    
+    
   }
+ 
 }
 // i need to be able to get weather data for this
-// $(document).on("click", ".city",);
+$(document).on("click", ".city", fetchCity);
+
 
 renderButtons();
