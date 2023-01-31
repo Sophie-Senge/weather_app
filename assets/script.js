@@ -66,7 +66,7 @@ function mainCard(data) {
 
 function makeForecast(data) {
   forecastEl.innerHTML = ""
-  for (let i = 8; i < data.list.length; i += 8) {
+  for (let i = 3; i < data.list.length; i += 8) {
     // const element = array[i];
     // console.log(data.list[8])
     cityLocation = data.list[i].dt
@@ -76,7 +76,7 @@ function makeForecast(data) {
     cityHumidity = data.list[i].main.humidity
     icon = data.list[i].weather[0].icon
     icon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-    let fiveDays = `<div class="card col-sm-3">
+    let fiveDays = `
   <div class="card-header">
     ${cityDate} <img class="img-thumbnail rounded" src=${icon}>
   </div>
@@ -84,11 +84,11 @@ function makeForecast(data) {
     <li class="list-group-item">Temp: ${cityTemp} °C</li>
     <li class="list-group-item">Wind: ${cityWind} KPH</li>
     <li class="list-group-item">Humidity: ${cityHumidity} %</li>
-  </ul>
-</div>`
+  </ul>`
 
     // forecastEl.innerHTML = fiveDays;
     let newDiv = document.createElement("div");
+    newDiv.setAttribute("class", "card col-sm-2")
     newDiv.innerHTML = fiveDays;
     forecastEl.append(newDiv);
   }
