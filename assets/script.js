@@ -89,7 +89,7 @@ function makeForecast(data) {
     // forecastEl.innerHTML = fiveDays;
     let newDiv = document.createElement("div");
     newDiv.setAttribute("class", "card")
-    newDiv.setAttribute("style", "width: 11rem")
+    newDiv.setAttribute("style", "width: 10rem")
     newDiv.innerHTML = fiveDays;
     forecastEl.append(newDiv);
   }

@@ -1,7 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -30,6 +27,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+  color:#e6ce00 !important;
+  background-color: #ffffff !important;
 }
 ol, ul {
 	list-style: none;
@@ -51,3 +50,20 @@ table {
   padding-top: 10px !important;
   margin-top: 10px;
 }
+
+#search-button{
+  border-radius: 10%;
+  background-color: #e6ce00;
+  gap: 10px;
+  padding: 10px;
+  
+}
+
+#search-input{
+  padding: 10px;
+}
+
+/*  */
+
+
+
