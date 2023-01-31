@@ -102,9 +102,9 @@ document.querySelector("#search-button").addEventListener("click", function (eve
   fetchCity(citySearched)
 })
 
-function saveToStorage(newCity){
+function saveToStorage(newCity) {
   var citiesHistory = JSON.parse(localStorage.getItem("weather-search"))
-  if(citiesHistory.includes(newCity)){
+  if (citiesHistory.includes(newCity)) {
     return
   }
   citiesHistory.push(newCity)
@@ -115,7 +115,7 @@ function saveToStorage(newCity){
 function renderButtons() {
   console.log("Rendering buttons")
   var citiesHistory = JSON.parse(localStorage.getItem("weather-search"))
-  if(citiesHistory === null){
+  if (citiesHistory === null) {
     console.log("it's null")
     localStorage.setItem("weather-search", JSON.stringify([]))
     return
@@ -125,16 +125,21 @@ function renderButtons() {
     let buttons = $("<button>");
     buttons.addClass("city");
     buttons.addClass("btn btn-outline-dark btn-sm");
-    buttons.attr("data-name", citiesHistory[i]);
     buttons.text(citiesHistory[i]);
     $("#history").append(buttons);
-    
-    
+
+
   }
- 
+
 }
-// i need to be able to get weather data for this
-$(document).on("click", ".city", fetchCity);
+// function to match history buttons to new search
+citiesHistoryEl.addEventListener("click", function (event) {
+  if (event.target.matches("button")) {
+    
+    let cityName = event.target.textContent;
+    fetchCity(cityName);
+  }
+})
 
 
 renderButtons();

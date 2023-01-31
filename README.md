@@ -33,7 +33,7 @@ SO THAT I can plan a trip accordingly
 
 ## Mock-Up
 
-The following image shows my application's appearance and functionality:
+The following image shows my application's appearance and functionality- design is retro:
 
 ![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for London.](./assets/Screenshot%202023-01-31%20at%2011.06.40%20PM.png)
 
