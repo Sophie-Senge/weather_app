@@ -47,13 +47,20 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+h1, h2{
+  padding: 10px;
+}
 
 .city{
   padding-top: 10px !important;
   margin-top: 10px;
   color: rgb(206, 78, 56)!important;
   font-weight:500!important;
-  border-color: rgb(188, 184, 184)!important;
+  border-color: rgb(184, 185, 188)!important;
+}
+
+.city:hover{
+  background-color: rgb(72, 130, 228)!important;
 }
 
 .search-box{
