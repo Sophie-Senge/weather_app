@@ -4,7 +4,7 @@ let forecastEl = document.querySelector("#forecast");
 
 // function to get city information
 function fetchCity(city) {
-  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=d79ebdf8167debecd6d65d2247f86bad`)
+  fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=d79ebdf8167debecd6d65d2247f86bad`)
     .then(response => response.json())
     .then(citiesFound => {
       let firstCity = citiesFound[0];
