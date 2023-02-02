@@ -31,6 +31,13 @@ SO THAT I can plan a trip accordingly
     * The humidity
   * When a user click on a city in the search history they are again presented with current and future conditions for that city
 
+## Built With
+
+    * HTML
+    * CSS
+    * JavaScript
+    * Moment.js
+    * Server APIs
 ## Mock-Up
 
 The following image shows my application's appearance and functionality:
