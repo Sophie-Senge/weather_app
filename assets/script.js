@@ -96,10 +96,15 @@ function makeForecast(data) {
 }
 
 
-document.querySelector("#search-button").addEventListener("click", function (event) {
+document.querySelector("#search-input").addEventListener("keypress", function (event) {
+  if (event.key === "Enter"){
+
+
   event.preventDefault();
+  document.getElementById("search-button").click();
   let citySearched = document.querySelector("#search-input").value;
   fetchCity(citySearched)
+}
 })
 
 function saveToStorage(newCity) {
